@@ -11,6 +11,12 @@
         <property name="hibernate.connection.password">246816</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="hibernate.show_sql">true</property>
-
+        
+        <!--<property name="hbm2ddl.auto">create</property>-->
+        
+        <mapping class="com.mycompany.mavenproject1.entities.TimeTable"/>
+        <mapping class="com.mycompany.mavenproject1.entities.Lesson"/>
+        <mapping class="com.mycompany.mavenproject1.entities.TimeTableManager"/>
+        <mapping class="com.mycompany.mavenproject1.entities.ServiceMessage"/>
     </session-factory>
 </hibernate-configuration>

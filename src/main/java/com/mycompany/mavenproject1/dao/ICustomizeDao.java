@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenproject1.dao;
 
-import com.mycompany.mavenproject1.HibernateSessionFactoryUtil;
+import com.mycompany.mavenproject1.util.HibernateSessionFactoryUtil;
 import java.util.List;
 import java.util.function.Consumer;
 import org.hibernate.Session;
@@ -41,7 +41,9 @@ public interface ICustomizeDao<T> {
     default List<T> loadAll(String tableName) {
         return HibernateSessionFactoryUtil.getSessionFactory()
                 .openSession()
-                .createQuery("FROM " + tableName)
+                .createQuery("from " + tableName)
                 .list();
     }
+    
+    T loadBy(String queryPart);
 }

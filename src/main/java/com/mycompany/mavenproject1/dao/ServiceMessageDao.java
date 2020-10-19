@@ -5,8 +5,9 @@
  */
 package com.mycompany.mavenproject1.dao;
 
-import com.mycompany.mavenproject1.HibernateSessionFactoryUtil;
-import com.mycompany.mavenproject1.entities.ServiceMessage;
+import com.mycompany.mavenproject1.util.HibernateSessionFactoryUtil;
+import com.mycompany.mavenproject1.entity.ServiceMessage;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -17,10 +18,10 @@ public class ServiceMessageDao implements ICustomizeDao<ServiceMessage> {
     public ServiceMessageDao() { }
     
     public ServiceMessage loadBy(String key) {
-        return (ServiceMessage) HibernateSessionFactoryUtil.getSessionFactory()
+        Query query = HibernateSessionFactoryUtil.getSessionFactory()
                 .openSession()
-                .createQuery("from ServiceMessage m where m.key = " + key)
-                .list()
-                .get(0);
+                .createQuery("from ServiceMessage where key like :key");
+        query.setParameter("key", "%" + key + "%");
+        return (ServiceMessage) query.list().get(0);
     }
 }

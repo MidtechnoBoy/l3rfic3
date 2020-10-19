@@ -5,12 +5,13 @@
  */
 package com.mycompany.mavenproject1.dao;
 
-import com.mycompany.mavenproject1.HibernateSessionFactoryUtil;
-import com.mycompany.mavenproject1.entities.TimeTable;
-import com.mycompany.mavenproject1.entities.TimeTableManager;
+import com.mycompany.mavenproject1.util.HibernateSessionFactoryUtil;
+import com.mycompany.mavenproject1.entity.TimeTable;
+import com.mycompany.mavenproject1.entity.TimeTableManager;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Objects;
  */
 public class TimeTableManagerDao implements ICustomizeDao<TimeTableManager> {
     
-    private static final LocalDate DEFAULT_DATE = LocalDate.of(2020, Month.AUGUST, 31);
+    private static final LocalDate DEFAULT_DATE = LocalDate.of(2020, Month.AUGUST, 30);
     
     private LocalDate referenceDate;
     
@@ -47,19 +48,29 @@ public class TimeTableManagerDao implements ICustomizeDao<TimeTableManager> {
     }
     
     public TimeTableManager loadTimeTableManager() {
-        return (TimeTableManager) HibernateSessionFactoryUtil.getSessionFactory()
+        return load(isWeekEven());
+    }
+
+    @Override
+    public TimeTableManager loadBy(String trueOrFalse) {
+        
+        return load(Boolean.getBoolean(trueOrFalse));
+    }
+    
+    private TimeTableManager load(boolean isWeekEven) {
+         return (TimeTableManager) HibernateSessionFactoryUtil.getSessionFactory()
                 .openSession()
-                .createQuery("from TimeTableManager m where m.isWeekEven = " + false)
+                .createQuery("from TimeTableManager where isWeekEven = " + isWeekEven)
                 .list()
                 .get(0);
     }
     
-    public TimeTable loadBy(String dayOfWeek) {
+    public TimeTable loadByDayOfWeek(String dayOfWeek) {
         return (TimeTable) loadTimeTableManager()
                 .getTimeTables()
                 .stream()
                 .filter(t -> t.getDayOfWeek().equals(dayOfWeek))
-                .findFirst() ///???
-                .orElseThrow();
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
