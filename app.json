@@ -1,0 +1,5 @@
+{
+  "name": "L3rfic3 Bot",
+  "description": "UFO steals my description",
+  "addons": [ "heroku-postgresql" ]
+}

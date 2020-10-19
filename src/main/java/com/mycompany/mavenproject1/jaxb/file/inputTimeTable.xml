@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<timeTable>
+    <id>1</id>
+    <lessons>
+        <lesson>
+            <id>1</id>
+            <title>Базы данных</title>
+            <description>Лабораторная</description>
+            <lector>Захарова О.И.</lector>
+            <audienceNumber>4-08</audienceNumber>
+            <startTime>13:35</startTime>
+            <endTime>15:10</endTime>
+            <isRemote>false</isRemote>
+        </lesson>
+        <lesson>
+            <id>2</id>
+            <title>РВПРС на Java</title>
+            <description>Лабораторная</description>
+            <lector>Герасимов А.М.</lector>
+            <audienceNumber>2-35(2)</audienceNumber>
+            <startTime>15:20</startTime>
+            <endTime>16:55</endTime>
+            <isRemote>false</isRemote>
+        </lesson>
+        <lesson>
+            <id>3</id>
+            <title>КПО</title>
+            <description>Лабораторная</description>
+            <lector>Расеева Е.В.</lector>
+            <audienceNumber>2-33(2)</audienceNumber>
+            <startTime>17:05</startTime>
+            <endTime>18:40</endTime>
+            <isRemote>false</isRemote>
+        </lesson>
+    </lessons>
+    <dayOfWeek>MONDAY</dayOfWeek>
+    <dayOfWeekRus>ПОНЕДЕЛЬНИК</dayOfWeekRus>
+</timeTable>
