@@ -51,6 +51,11 @@
             <artifactId>sdk</artifactId>
             <version>0.5.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.mozilla</groupId>
+            <artifactId>rhino</artifactId>
+            <version>1.7.10</version>
+        </dependency>
     </dependencies>
     <build>
     <plugins>
@@ -73,7 +78,7 @@
                 </descriptorRefs>
                 <archive>
                     <manifest>
-                        <mainClass>com.mycompany.mavenproject1.Main</mainClass>
+                        <mainClass>rpis81.alexandrov.labs.Main</mainClass>
                     </manifest>
                 </archive>
             </configuration>
@@ -84,16 +89,7 @@
                     <goals>
                         <goal>single</goal>
                     </goals>
-                    <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>com.github.jsimone</groupId>
-                            <artifactId>webapp-runner</artifactId>
-                            <version>8.5.11.3</version>
-                            <destFileName>webapp-runner.jar</destFileName>
-                        </artifactItem>
-                    </artifactItems>
-                    </configuration>
+
                 </execution>
             </executions>
         </plugin>
